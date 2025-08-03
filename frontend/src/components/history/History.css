@@ -2,27 +2,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 
     width: 95%;
+    max-width: 800px;
     height: auto;
 
-    font-size: 23px;
+    font-size: 20px;
+
+    border-radius: 15px; 
+    overflow: hidden;
+
+    background-color: #fcfcfc;
+    border-radius: 15px;
 }
 
 .history table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
 }
 
 .history th,
 .history td {
-    border: 3px solid #8C030E;
-    padding: 10px;
+    border: 5px solid #8C030E;
+    text-align: center;
+    padding: 5px;
 }
 
 .history th {
     background-color: #8C031C;
     color: white;
+    border-bottom: 5px #8C030E;
+}
+
+.history tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+.history tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
 }

@@ -2,8 +2,10 @@
     align-items: center;
     text-align: center;
     border: none;
+    
 }
 
 .button img{
     border-radius: 50%;
+    border: 2px black;
 }

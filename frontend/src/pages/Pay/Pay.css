@@ -1,8 +1,7 @@
-.main {
+.pay-main {
     align-items: center;
     display: flex;
-
-    margin-top: 400px;
+    margin-top: 350px;
 }
 
 .payForm {
@@ -10,7 +9,6 @@
     gap: 15px;
     text-align: center;
     align-items: center;
-
 }
 
 .payForm input[type='text'],
@@ -19,7 +17,6 @@
     align-items: center;
 
     border-radius: 5px;
-
 }
 
 .payForm input[type='text'] {
