@@ -1,6 +1,7 @@
 .button {
     align-items: center;
     text-align: center;
+    border: none;
 }
 
 .button img{

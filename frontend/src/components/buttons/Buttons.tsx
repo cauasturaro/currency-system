@@ -1,19 +1,32 @@
+import { useNavigate } from 'react-router-dom';
 import './Buttons.css';
 
 export function PayButton() {
+    const navigate = useNavigate();
+
+    const handlePayClick = () => {
+        navigate('/pay');
+    }
+
     return(
-        <div className="button">
+        <button className="button" onClick={handlePayClick}>
             <img src="https://placehold.co/90x90" alt="Pay Button"></img>
             <h3>Pay</h3>
-        </div>
+        </button>
     );
 }
 
-export function ReciveButton() {
+export function ReceiveButton() {
+    const navigate = useNavigate();
+
+    const handleReciveClick = () => {
+        navigate('/pay'); // change later
+    }
+
     return(
-        <div className="button">
+        <button className="button" onClick={handleReciveClick}>
             <img src="https://placehold.co/90x90" alt="Recive Button"></img>
             <h3>Recive</h3>
-        </div>
+        </button>
     );
 }

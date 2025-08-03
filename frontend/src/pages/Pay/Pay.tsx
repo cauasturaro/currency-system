@@ -1,12 +1,12 @@
-
-
 import './Pay.css';
 
 export function PayPage() {
     return(
         <div className="main">
-            {/*LOCAL PRA ESCREVER CÓDIGO */}
-            {/*BOTÃO PRA CONFIRMAR */}
+            <form className='payForm'>
+                <input type='text' placeholder='000000'/>
+                <input type='submit' value="Pay"/>
+            </form>
         </div>
     );
 }
