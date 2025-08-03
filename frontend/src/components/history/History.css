@@ -1,0 +1,28 @@
+.history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 95%;
+    height: auto;
+
+    font-size: 23px;
+}
+
+.history table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.history th,
+.history td {
+    border: 3px solid #8C030E;
+    padding: 10px;
+}
+
+.history th {
+    background-color: #8C031C;
+    color: white;
+}

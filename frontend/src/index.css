@@ -1,0 +1,10 @@
+* {
+    display: flexbox;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: #FCFCFC;
+    font-family: Arial, sans-serif;
+}
