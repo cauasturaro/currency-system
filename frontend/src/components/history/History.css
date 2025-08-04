@@ -13,7 +13,7 @@
     overflow: hidden;
 
     background-color: #fcfcfc;
-    border-radius: 15px;
+    border-radius: 25px;
 }
 
 .history table {
@@ -25,7 +25,6 @@
 
 .history th,
 .history td {
-    border: 5px solid #8C030E;
     text-align: center;
     padding: 5px;
 }
@@ -36,9 +35,13 @@
     border-bottom: 5px #8C030E;
 }
 
+.history td {
+    background-color: rgb(243, 243, 243);
+    border: 2px solid #8C030E;
+}
 .history tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 15px;
+    border-bottom-left-radius: 25px;
 }
 .history tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 15px;
+    border-bottom-right-radius: 25px;
 }
