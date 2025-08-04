@@ -16,8 +16,8 @@ export function Account() {
     };
 
     return (
-        <div className="user-div">
-            <h2>{isBalanceVisible ? formattedBalance : 'R$ ••••••'}</h2>
+        <div className="account-div">
+            <h2>{isBalanceVisible ? formattedBalance : '$ ••••••'}</h2>
             
             <HideButton 
                 isVisible={isBalanceVisible}

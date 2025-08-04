@@ -35,7 +35,7 @@ export function HideButton({ isVisible, onToggle }) {
 
     return (
         <button className="hide-button" onClick={onToggle}>
-            <img src={imageUrl} alt={altText} />
+            <img src={imageUrl} alt={altText} className='teste' />
         </button>
     );
 }

@@ -5,6 +5,8 @@ import { HideButton } from '../buttons/Buttons';
 export function User() {
     const [isBalanceVisible, setIsBalanceVisible] = useState(true);
 
+    const username = "Cauã Sturaro"
+
     const balance = 26266.73;
     const formattedBalance = balance.toLocaleString('en', {
         style: 'currency',
@@ -19,12 +21,7 @@ export function User() {
         <div className="user-div">
             <img src="/images/user.png" alt="profile picture" />
 
-            <h2>{isBalanceVisible ? formattedBalance : 'R$ ••••••'}</h2>
-            
-            <HideButton 
-                isVisible={isBalanceVisible}
-                onToggle={toggleVisibility}
-            />
+            <h2>Olá, {username}!</h2>
         </div>
     );
 }

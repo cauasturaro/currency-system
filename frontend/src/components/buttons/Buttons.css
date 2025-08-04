@@ -6,12 +6,11 @@
 
     border: none;
 
-    cursor: pointer;
-
     background-color: transparent;
 
     gap: 5px;
     width: 80px;
+    height: 80px;
 }
 
 .button img{
@@ -22,12 +21,15 @@
 
     border-radius: 50%;
 
-    background-color: #efefef;
     transition: 0.4s ease;
+
+    background-color: #471111;
+    box-shadow: 3px 3px 2px rgb(0, 0, 0, 0.25);
 }
 
 .button img:hover{
-    background-color: #dadada;
+    background-color: #8C030E;
+    cursor: pointer;
 }
 
 
@@ -39,23 +41,33 @@
 
 .hide-button {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    border-radius: 50%;
     border: none;
 
-    background-color: transparent;
-    transform: 0.4s ease;
-
     cursor: pointer;
-}
 
-.hide-button:hover {
-    cursor:  pointer;
+    background-color: transparent;
+
+    gap: 5px;
+
 }
 
 .hide-button img{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+
+    padding: 5px;
+
+    border-radius: 50%;
+
+    background-color: transparent;
+    transition: 0.4s ease;
 }
+
+.hide-button img:hover{
+    background-color: #611313;
+}
+
