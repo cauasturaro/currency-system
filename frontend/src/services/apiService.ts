@@ -4,6 +4,7 @@ import axios from 'axios';
 interface User {
     id: number;
     name: string;
+    balance: number
 }
 
 interface Payment {
@@ -31,6 +32,22 @@ export async function getPaymentHistoryForUser(userId: string): Promise<Payment[
     } catch (error) {
         if (axios.isAxiosError(error)) {
             const errorMessage = error.response?.data?.message || "Failed to fetch payment history.";
+            console.error("API Service Error:", errorMessage);
+            throw new Error(errorMessage);
+        } else {
+            console.error("An error occurred:", error);
+            throw new Error("An error occurred.");
+        }
+    }
+}
+
+export async function getBalanceForUser(userId: string): Promise<number> {
+    try {
+        const response = await apiClient.get<{balance : number}>(`/users/${userId}/balance`);
+        return response.data.balance;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            const errorMessage = error.response?.data?.message || "Failed to fetch user balance.";
             console.error("API Service Error:", errorMessage);
             throw new Error(errorMessage);
         } else {

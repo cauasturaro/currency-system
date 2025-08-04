@@ -30,9 +30,9 @@ export function History() {
                 const userId = '1'; 
                 const data = await getPaymentHistoryForUser(userId);
                 setPayments(data);
-            } catch (err) {
-                if (err instanceof Error) {
-                    setError(err.message);
+            } catch (error) {
+                if (error instanceof Error) {
+                    setError(error.message);
                 } else {
                     setError("An error occurred.");
                 }
