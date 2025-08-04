@@ -1,8 +1,8 @@
-import './User.css';
+import './Account.css';
 import { useState } from 'react';
 import { HideButton } from '../buttons/Buttons'; 
 
-export function User() {
+export function Account() {
     const [isBalanceVisible, setIsBalanceVisible] = useState(true);
 
     const balance = 26266.73;
@@ -17,8 +17,6 @@ export function User() {
 
     return (
         <div className="user-div">
-            <img src="/images/user.png" alt="profile picture" />
-
             <h2>{isBalanceVisible ? formattedBalance : 'R$ ••••••'}</h2>
             
             <HideButton 

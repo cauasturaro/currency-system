@@ -5,43 +5,66 @@
 
     width: 95%;
     max-width: 800px;
-    height: auto;
 
     font-size: 20px;
 
-    border-radius: 15px; 
-    overflow: hidden;
-
-    background-color: #fcfcfc;
     border-radius: 25px;
+
+    overflow: hidden; 
 }
 
 .history table {
-    width: 100%;
-    border-collapse: separate;
+    border-collapse: separate; 
     border-spacing: 0;
-    margin: 0;
 }
 
 .history th,
 .history td {
     text-align: center;
-    padding: 5px;
+
+    padding: 12px 15px;
+
+    border: none; 
 }
 
 .history th {
     background-color: #8C031C;
     color: white;
-    border-bottom: 5px #8C030E;
+}
+
+.history tbody tr {
+    transition: background-color 0.2s ease; 
+}
+
+.history tbody tr:hover {
+    background-color: #f0f0f0; 
 }
 
 .history td {
-    background-color: rgb(243, 243, 243);
-    border: 2px solid #8C030E;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
 }
-.history tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 25px;
+
+.history tbody tr:last-child td {
+    border-bottom: none;
 }
-.history tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 25px;
+
+.history tr.payer td:last-child {
+    color: #af1b1b;
+    font-weight: bold;
+}
+
+.history tr.receiver td:last-child {
+    color: #1a7d1f;
+    font-weight: bold;
+}
+
+.history tr.payer td:nth-child(1){
+    color: rgb(2, 29, 130);
+    font-weight: bold;
+}
+
+.history tr.receiver td:nth-child(2){
+    color: rgb(2, 29, 130);
+    font-weight: bold;
 }

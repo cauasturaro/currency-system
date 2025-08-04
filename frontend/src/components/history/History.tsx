@@ -51,8 +51,11 @@ export function History() {
         return <div className="history-status error">Error: {error}</div>;
     }
 
-    const formatCurrency = (value: string) => {
-            return `$${parseFloat(value).toFixed(2)}`;
+    const formattedBalance = (value: string) => {
+        return parseFloat(value).toLocaleString('en', {
+            style: 'currency',
+            currency: 'USD'
+        });
     };
 
     return (
@@ -67,13 +70,18 @@ export function History() {
                 </thead>
                 <tbody>
                     {payments.length > 0 ? (
-                        payments.map(payment => (
-                            <tr key={payment.id}>
-                                <td>{payment.payer.name}</td>
-                                <td>{payment.receiver.name}</td>
-                                <td>{formatCurrency(payment.value)}</td>
-                            </tr>
-                        ))
+                        payments.map(payment => {
+                          
+                            const rowClass = payment.payer.id === 1 ? 'payer' : 'receiver';
+
+                            return (
+                                <tr key={payment.id} className={rowClass}>
+                                    <td>{payment.payer.name}</td>
+                                    <td>{payment.receiver.name}</td>
+                                    <td>{formattedBalance(payment.value)}</td>
+                                </tr>
+                            );
+                        })
                     ) : (
                         <tr>
                             <td colSpan={3}>No transactions found.</td>

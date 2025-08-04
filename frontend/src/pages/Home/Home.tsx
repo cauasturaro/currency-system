@@ -1,6 +1,7 @@
 import { User } from "../../components/user/User";
 import { History } from "../../components/history/History";
 import { PayButton, ReceiveButton } from "../../components/buttons/Buttons";
+import { Account } from "../../components/account/Account";
 
 import './Home.css';
 
@@ -8,6 +9,7 @@ export function HomePage() {
     return(
         <div className="main">
             <User></User>
+ 
             <div className="buttons">
                 <PayButton></PayButton>
                 <ReceiveButton></ReceiveButton>
