@@ -4,26 +4,45 @@ const paymentService = require('../services/PaymentService');
 const handleError = (error, res) => {
     console.error(error);
 
-    if (error.message.includes("wasn't found") || error.message.includes("wasn't able to create")) {
+    if (error.message.includes("wasn't found") || error.message.includes("wasn't able to create")) 
         return res.status(404).json({ message: error.message });
-    }
-    if (error.message.includes("Insufficient funds") || error.message.includes("must be positive")) {
+
+    if (error.message.includes("Insufficient funds") || error.message.includes("must be positive"))
         return res.status(400).json({ message: error.message });
-    }
+
+    if (error.message)
 
     return res.status(500).json({ message: 'An internal server error occurred.' });
 };
 
 class UserController {
 
-    static async createUser(req, res) {
+    static async registerUser(req, res) {
         try {
-            const { name, balance = 0 } = req.body; 
-            if (!name) {
-                return res.status(400).json({ message: "User's name is required" });
-            }
-            const newUser = await userService.createUser({ name, balance });
+            const { name, email, password } = req.body; 
+
+            if (!name || !email || !password) 
+                return res.status(400).json({ message: "Name, email, and password are required." });      
+
+            const newUser = await userService.createUser({ name, email, password });
             res.status(201).json(newUser);
+        } catch (error) {
+            if (error.name === "SequelizeUniiqueConstraintError") 
+                return res.status(409).json({ message: "Email already in use." });
+
+            handleError(error, res);
+        }
+    }
+
+    static async loginUser(req, res) {
+        try {
+            const { email, password } = req.body;
+
+            if (!email || !password ) 
+                return res.status(400).json({ message: "All credentials are required." });
+
+            const user = await userService.loginUser({ email, password });
+            res.status(200).json(user);
         } catch (error) {
             handleError(error, res);
         }

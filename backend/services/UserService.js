@@ -1,14 +1,50 @@
+const bcrypt = require('bcrypt');
+
 const { User } = require('../models/index');
+
+const bcryptCost = 10;
 
 class UserService {
 
-    async createUser(userData) {
+    async createUser({ name, email, password }) {
         try {
-            const user = await User.create(userData);
-            return user;
+            const passwordHash = await bcrypt.hash(password, bcryptCost);
+
+            const user = await User.create({
+                name, 
+                email,
+                passwordHash
+            });
+
+            const userJson = user.toJSON();
+            delete userJson.passwordHash;
+
+            return userJson;
         } catch (error) {
             console.error("Error creating user:", error);
             throw new Error("Wasn't able to create user");
+        }
+    }
+
+    async loginUser({ email, password }) {
+        try {
+            const user = await User.findOne({ where: {email} });
+            if (!user) 
+                throw new Error("Authentication failed: User not found.");
+            
+
+            const passwordMatch = await bcrypt.compare(password, user.passwordHash);
+            
+            if (!passwordMatch) 
+                throw new Error("Authentication failed: Invalid credentials.");
+
+            const userJson = user.toJSON();
+            delete userJson.passwordHash;
+
+            return userJson;
+        } catch (error) {
+            console.error("Error trying to authenticate:", error);
+            throw new Error("Wasn't able to authenticate user");
         }
     }
 

@@ -4,7 +4,7 @@ import { HideButton } from '../buttons/Buttons';
 import { getBalanceForUser } from '../../services/apiService';
 
 export function Account() {
-    const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+    const [isBalanceVisible, setIsBalanceVisible] = useState<boolean>(true);
     const [balance, setBalance] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
