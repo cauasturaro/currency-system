@@ -10,9 +10,10 @@ const handleError = (error, res) => {
     if (error.message.includes("Insufficient funds") || error.message.includes("must be positive"))
         return res.status(400).json({ message: error.message });
 
-    if (error.message)
+    if (error.message.includes("Error trying to authenticate"));
+        return res.status(400).json({ message: "Invalid Credentials"});
 
-    return res.status(500).json({ message: 'An internal server error occurred.' });
+    return res.status(500).json({ message: "An internal server error occurred." });
 };
 
 class UserController {

@@ -1,21 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getPaymentHistoryForUser } from '../../services/apiService';
-//import { Payment } from '../../models/PaymentModel';
 
-interface User {
-    id: number;
-    name: string;
-}
-
-interface Payment {
-    id: number;
-    value: string; 
-    status: 'pending' | 'completed' | 'failed';
-    payer: User;
-    receiver: User;
-    createdAt: string; 
-    updatedAt: string;
-}
+import type { User } from '../../models/UserModel';
+import type { Payment } from '../../models/PaymentModel';
 
 import './History.css';
 

@@ -1,17 +1,11 @@
-//import { User } from './UserModel';
-
-interface User {
-    id: number;
-    name: string;
-}
+import type { User } from './UserModel';
 
 export interface Payment {
     id: number;
-    value: string; 
+    value: string;
     status: 'pending' | 'completed' | 'failed';
     payer: User;
     receiver: User;
-    createdAt: string; 
+    createdAt: string;
     updatedAt: string;
 }
-

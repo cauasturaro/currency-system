@@ -1,0 +1,66 @@
+.login-main {
+    align-items: center;
+    display: flex;
+    margin-top: 200px;
+}
+
+.login-main h2{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.loginForm {
+    display: flex;
+    gap: 15px;
+    text-align: center;
+    align-items: center;
+}
+
+.loginForm .text,
+.loginForm input[type='submit'] {
+    text-align: center;
+    align-items: center;
+
+    border-radius: 5px;
+}
+
+.loginForm .text {
+    height: 40px;
+    font-size: 18px;
+
+    width: 280px;
+
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    
+    border: 2px solid #292121;
+}
+
+.loginForm input[type='submit'] {
+    
+    background-color: #8C030E; 
+    color: white;
+
+    cursor: pointer;
+
+    border: none; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+
+    font-size:18px;
+    font-weight: bold;
+
+    transition: background-color 0.3s ease; 
+
+    width: 60%; 
+    height: 40px;
+
+    margin-top: 20px;
+    padding: 10px 15px;
+}
+
+.loginForm input[type='submit']:hover {
+    background-color: rgb(167, 0, 17); 
+}
+
+.register-link {
+    color: rgb(30, 95, 247);
+}

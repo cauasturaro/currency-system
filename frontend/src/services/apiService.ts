@@ -1,21 +1,8 @@
 import axios from 'axios';
-// import { Payment } from '../models/PaymentModel';
 
-interface User {
-    id: number;
-    name: string;
-    balance: number
-}
+import type { User } from '../models/UserModel';
+import type { Payment } from '../models/PaymentModel';
 
-interface Payment {
-    id: number;
-    value: string; 
-    status: 'pending' | 'completed' | 'failed';
-    payer: User;
-    receiver: User;
-    createdAt: string; 
-    updatedAt: string;
-}
 
 const apiClient = axios.create({
     baseURL: 'http://localhost:8080/api',
@@ -23,7 +10,6 @@ const apiClient = axios.create({
         'Content-Type': 'application/json',
     }
 });
-
 
 export async function getPaymentHistoryForUser(userId: string): Promise<Payment[]> {
     try {
@@ -69,6 +55,42 @@ export async function getNameForUser(userId: string): Promise<string> {
         } else {
             console.error("An error occurred:", error);
             throw new Error("An error occurred.");
+        }
+    }
+}
+
+import type { RegisterPayload } from '../models/register/registerPayLoad';
+
+export async function registerUser(payload: RegisterPayload): Promise<User> {
+    try {
+        const response = await apiClient.post<User>('/users/register', payload);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            const errorMessage = error.response?.data?.message || "Registration failed.";
+            console.error("API Service Error:", errorMessage);
+            throw new Error(errorMessage);
+        } else {
+            console.error("An unexpected error occurred:", error);
+            throw new Error("An unexpected error occurred.");
+        }
+    }
+}
+
+import type { LoginResponse, LoginPayLoad } from '../models/login/login';
+
+export async function loginUser(payload: LoginPayLoad): Promise<LoginResponse> {
+    try {
+        const response = await apiClient.post<LoginResponse>('/users/login', payload);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            const errorMessage = error.response?.data?.message || "Authentication failed.";
+            console.error("API Service Error:", errorMessage);
+            throw new Error(errorMessage);
+        } else {
+            console.error("An unexpected error occurred:", error);
+            throw new Error("An unexpected error occurred.");
         }
     }
 }
