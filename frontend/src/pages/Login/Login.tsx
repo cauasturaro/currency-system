@@ -61,7 +61,7 @@ export function LoginPage() {
                 <input 
                     className='submit' 
                     type='submit' 
-                    value={isLoading ? "Logging in..." : "Login"}
+                    value="Login"
                     disabled={isLoading}
                 />
             </form>
