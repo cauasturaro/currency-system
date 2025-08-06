@@ -10,4 +10,7 @@ router.get('/:id/balance', UserController.getUserBalance);
 router.get('/:id/payments', UserController.getPaymentHistory);
 router.delete('/:id', UserController.deleteUser);
 
+const authMiddleware = require('../middleware/authMiddleware');
+router.get('/me', authMiddleware, UserController.getUserProfile);
+
 module.exports = router;

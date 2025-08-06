@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const { User } = require('../models/index');
 
@@ -22,7 +23,7 @@ class UserService {
             return userJson;
         } catch (error) {
             console.error("Error creating user:", error);
-            throw new Error("Wasn't able to create user");
+            throw error;
         }
     }
 
@@ -32,19 +33,24 @@ class UserService {
             if (!user) 
                 throw new Error("Authentication failed: User not found.");
             
-
             const passwordMatch = await bcrypt.compare(password, user.passwordHash);
             
             if (!passwordMatch) 
                 throw new Error("Authentication failed: Invalid credentials.");
 
+            const payload = {
+                id: user.id,
+            }
+
+            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d'});
+
             const userJson = user.toJSON();
             delete userJson.passwordHash;
 
-            return userJson;
+            return { user: userJson, token };
         } catch (error) {
             console.error("Error trying to authenticate:", error);
-            throw new Error("Wasn't able to authenticate user");
+            throw error;
         }
     }
 

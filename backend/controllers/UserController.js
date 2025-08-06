@@ -18,6 +18,10 @@ const handleError = (error, res) => {
 
 class UserController {
 
+    static async getUserProfile(req, res) {
+        res.status(200).json(req.user);
+    }
+
     static async registerUser(req, res) {
         try {
             const { name, email, password } = req.body; 

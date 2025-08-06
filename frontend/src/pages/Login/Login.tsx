@@ -21,7 +21,7 @@ export function LoginPage() {
 
         try{
             const response = await loginUser({ email, password });
-            // FAZER UM SAVE DO TOKEN MAIS TARDE PARA ACESSOS FUTUROS NA PÁGINA
+            localStorage.setItem('authToken', response.token);
             navigate('/home');
         } catch (error) {
             if (error instanceof Error )

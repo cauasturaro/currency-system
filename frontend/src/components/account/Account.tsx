@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { HideButton } from '../buttons/Buttons'; 
 import { getBalanceForUser } from '../../services/apiService';
 
-export function Account() {
+export function Account(id: string) {
     const [isBalanceVisible, setIsBalanceVisible] = useState<boolean>(true);
     const [balance, setBalance] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -12,7 +12,7 @@ export function Account() {
     useEffect(() => {
         const loadBalance = async () => {
             try {
-                const userId = '1';
+                const userId = id;
                 const data = await getBalanceForUser(userId);
                 setBalance(data)
             } catch (error) {
